@@ -1,13 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    // Allows the build to complete even if there are minor type mismatches
+    // Allows the build to complete even with type mismatches
     ignoreBuildErrors: true, 
   },
   eslint: {
-    // Prevents linting warnings from crashing the deployment
+    // Prevents linting from stopping the build
     ignoreDuringBuilds: true,
   },
+  // Ensure the build process handles the CSS loader correctly
+  swcMinify: true,
 };
 
 export default nextConfig;
