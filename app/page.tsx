@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Shield, Rocket, Building2, User, ChevronRight, 
   BarChart3, Globe, Lock, Cpu, Zap, Eye, ArrowDown 
@@ -14,7 +14,7 @@ export default function UrShieldEliteHub() {
     offset: ["start start", "end start"]
   });
 
-  // Giant text parallax effects
+  // Giant text parallax effects for high-end feel
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
@@ -24,15 +24,15 @@ export default function UrShieldEliteHub() {
       id: '01', 
       title: 'Individual', 
       tag: 'Private Wealth', 
-      icon: <User size={48} />, 
+      icon: <User size={48} strokeWidth={1} />, 
       path: '/individual',
-      desc: 'Sophisticated wealth shielding and private tax design for HNIs.' 
+      desc: 'Sophisticated wealth shielding and private tax design for elite capital.' 
     },
     { 
       id: '02', 
       title: 'Organisation', 
       tag: 'Enterprise', 
-      icon: <Building2 size={48} />, 
+      icon: <Building2 size={48} strokeWidth={1} />, 
       path: '/organisation',
       desc: 'Institutional-grade compliance and financial stress-testing.' 
     },
@@ -40,28 +40,28 @@ export default function UrShieldEliteHub() {
       id: '03', 
       title: 'Startup', 
       tag: 'Venture', 
-      icon: <Rocket size={48} />, 
+      icon: <Rocket size={48} strokeWidth={1} />, 
       path: '/startup',
-      desc: 'Venture architecture from inception to capital exit.' 
+      desc: 'Venture architecture from inception to strategic capital exit.' 
     }
   ];
 
   return (
     <div className="relative">
-      {/* NOISE OVERLAY */}
-      <div className="fixed inset-0 bg-noise opacity-[0.03] pointer-events-none z-[9999]" />
+      {/* NOISE OVERLAY - Applied via globals.css utility */}
+      <div className="fixed inset-0 bg-noise pointer-events-none z-[9999]" />
 
-      {/* ELITE NAVIGATION */}
-      <nav className="flex justify-between items-center px-12 py-10 fixed top-0 w-full z-50 bg-black/10 backdrop-blur-md border-b border-white/5">
+      {/* ELITE NAVIGATION - Mix blend difference for that premium look */}
+      <nav className="flex justify-between items-center px-12 py-10 fixed top-0 w-full z-50 mix-blend-difference">
         <div className="flex items-center gap-3">
           <Shield className="text-[#00FFD1] w-10 h-10" />
-          <span className="text-3xl font-bold tracking-tighter uppercase italic tracking-[0.2em]">URSHIELD</span>
+          <span className="text-3xl font-bold tracking-tighter uppercase italic tracking-[0.2em] text-white">URSHIELD</span>
         </div>
-        <div className="hidden lg:flex gap-12 text-[10px] font-black uppercase tracking-[0.5em] text-white/40">
+        <div className="hidden lg:flex gap-12 text-[10px] font-black uppercase tracking-[0.5em] text-white/50">
           <Link href="/individual" className="hover:text-[#00FFD1] transition-all">Wealth</Link>
           <Link href="/organisation" className="hover:text-[#00FFD1] transition-all">Enterprise</Link>
           <Link href="/startup" className="hover:text-[#00FFD1] transition-all">Venture</Link>
-          <Link href="#contact" className="text-[#00FFD1] border-b border-[#00FFD1]">Consult</Link>
+          <Link href="/pulse-report" className="text-[#00FFD1] border-b border-[#00FFD1]">Intelligence</Link>
         </div>
       </nav>
 
@@ -87,7 +87,7 @@ export default function UrShieldEliteHub() {
           </motion.div>
         </motion.div>
 
-        {/* Dynamic Background Element */}
+        {/* Dynamic Background Orbital Elements */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[80vw] h-[80vw] border border-white/[0.03] rounded-full animate-spin-slow" />
           <div className="absolute w-[60vw] h-[60vw] border border-[#00FFD1]/[0.02] rounded-full animate-spin-slow [animation-direction:reverse]" />
@@ -104,7 +104,7 @@ export default function UrShieldEliteHub() {
 
       {/* SECTOR CARDS - GIANT SCALE */}
       <section className="px-6 py-40 max-w-[1600px] mx-auto grid lg:grid-cols-3 gap-6 bg-black">
-        {sectors.map((sector, i) => (
+        {sectors.map((sector) => (
           <Link key={sector.id} href={sector.path}>
             <motion.div 
               whileHover={{ y: -20, scale: 0.98 }}
@@ -124,7 +124,7 @@ export default function UrShieldEliteHub() {
                 <ChevronRight size={32} className="group-hover:translate-x-2 transition-transform" />
               </div>
 
-              {/* Huge Background Icon */}
+              {/* Huge Background Icon Element */}
               <div className="absolute -bottom-10 -right-10 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity scale-[3] pointer-events-none text-white">
                 {sector.icon}
               </div>
@@ -158,15 +158,16 @@ export default function UrShieldEliteHub() {
           </div>
 
           <div className="relative">
+            {/* PULSE REPORT CTA - NOW LINKED TO THE RESULTS PAGE */}
             <div className="sticky top-40 glass rounded-[6rem] p-24 text-center overflow-hidden">
               <Zap className="text-[#00FFD1] mx-auto mb-10 animate-pulse" size={64} />
               <h3 className="text-6xl font-serif italic mb-10">Order the Pulse Report.</h3>
               <p className="text-white/40 text-xl font-light mb-16 leading-relaxed">
                 Clarity is mandatory. Risk is an choice. Get your 360° vulnerability diagnostic today.
               </p>
-              <button className="w-full btn-giant bg-white text-black hover:bg-[#00FFD1]">
+              <Link href="/pulse-report" className="block w-full btn-giant bg-white text-black hover:bg-[#00FFD1] text-center">
                 Initiate Stress Test
-              </button>
+              </Link>
               
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00FFD1] to-transparent opacity-20" />
             </div>
@@ -182,33 +183,33 @@ export default function UrShieldEliteHub() {
             <h2 className="text-[10vw] font-serif italic mb-12 tracking-tighter leading-none">
               The <span className="text-[#008080]">Vault.</span>
             </h2>
-            <p className="text-black/40 text-2xl font-light mb-24">Exclusivity is our core policy. State your challenge.</p>
+            <p className="text-black/40 text-2xl font-light mb-24">Exclusivity is our core policy. State your identity.</p>
             
             <form className="space-y-20 text-left max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-20">
                 <div className="group">
                   <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/20 block mb-4">IDENTITY</label>
-                  <input type="text" placeholder="NAME / ENTITY" className="w-full bg-transparent border-b border-black/10 py-6 text-3xl font-serif italic focus:outline-none focus:border-[#008080] transition-colors" />
+                  <input type="text" placeholder="NAME / ENTITY" className="w-full bg-transparent border-b border-black/10 py-6 text-3xl font-serif italic focus:outline-none focus:border-[#008080] transition-colors placeholder:text-black/10" />
                 </div>
                 <div className="group">
                   <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/20 block mb-4">SECURE COMMS</label>
-                  <input type="email" placeholder="EMAIL ADDRESS" className="w-full bg-transparent border-b border-black/10 py-6 text-3xl font-serif italic focus:outline-none focus:border-[#008080] transition-colors" />
+                  <input type="email" placeholder="EMAIL ADDRESS" className="w-full bg-transparent border-b border-black/10 py-6 text-3xl font-serif italic focus:outline-none focus:border-[#008080] transition-colors placeholder:text-black/10" />
                 </div>
               </div>
               <div className="group">
                 <label className="text-[10px] font-black uppercase tracking-[0.4em] text-black/20 block mb-4">OBJECTIVE</label>
-                <textarea rows={4} placeholder="DESCRIBE THE VULNERABILITY" className="w-full bg-transparent border-b border-black/10 py-6 text-3xl font-serif italic focus:outline-none focus:border-[#008080] transition-colors resize-none" />
+                <textarea rows={4} placeholder="DESCRIBE THE VULNERABILITY" className="w-full bg-transparent border-b border-black/10 py-6 text-3xl font-serif italic focus:outline-none focus:border-[#008080] transition-colors resize-none placeholder:text-black/10" />
               </div>
               
               <div className="flex justify-center pt-10">
                 <button type="submit" className="px-24 py-10 rounded-full bg-black text-white font-black text-2xl tracking-tighter uppercase hover:scale-105 transition-all shadow-2xl">
-                  Submit Brief
+                  Submit Briefing
                 </button>
               </div>
             </form>
 
             <div className="mt-40 pt-20 border-t border-black/5 flex flex-wrap justify-center gap-20 text-[10px] font-black tracking-[0.5em] text-black/30">
-              <span>+91 [INSERT MOBILE]</span>
+              <span>+91 [MOBILE]</span>
               <span>SECURE@URSHIELD.COM</span>
               <span>GLOBAL HEADQUARTERS</span>
             </div>
