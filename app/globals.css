@@ -1,132 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --accent: #00ffd1;
-  --accent-soft: rgba(0, 255, 209, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.08);
-}
-
-/* --- High-End Foundation --- */
 @layer base {
-  html {
-    @apply scroll-smooth;
-    background-color: var(--background);
-    /* Prevent layout shift during animations */
-    scrollbar-gutter: stable;
-  }
-
   body {
     background-color: var(--background);
     color: var(--foreground);
-    @apply antialiased overflow-x-hidden font-sans selection:bg-[#00ffd1] selection:text-black;
-    /* Optimized line height for massive viewport-width text */
-    line-height: 0.9;
-    letter-spacing: -0.02em;
+    @apply antialiased overflow-x-hidden;
+    /* This makes text look sharp and professional */
+    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Custom typography reset for serif italic sections */
-  i, .font-serif {
-    letter-spacing: -0.04em;
+  /* Giant Headlines - Zero line height for the "stacked" look */
+  h1 {
+    @apply font-serif italic;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+  }
+
+  /* Subheaders - Tight and uppercase */
+  h2, h3 {
+    @apply font-sans font-black uppercase tracking-[0.2em];
+    line-height: 1.1;
+  }
+
+  /* Body text - Elegant and airy */
+  p {
+    @apply font-sans font-light;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.4); /* Dimmed for hierarchy */
   }
 }
 
-/* --- Elite Components --- */
 @layer components {
-  .glass {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border: 1px solid var(--glass-border);
-    @apply transition-all duration-1000 ease-out;
+  /* This creates the "High Fashion" text look */
+  .text-display {
+    @apply font-serif italic text-[clamp(4rem,12vw,16rem)];
+    line-height: 0.8;
   }
-
-  .text-gradient {
-    background: linear-gradient(to bottom right, #ffffff 30%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-  }
-
-  /* Giant Interactive Button */
-  .btn-giant {
-    @apply relative overflow-hidden px-14 py-8 rounded-full font-black uppercase tracking-[0.4em] 
-           transition-all duration-500 border border-white/5 bg-transparent text-white
-           hover:border-[#00ffd1] hover:text-[#00ffd1] hover:shadow-[0_0_50px_rgba(0,255,209,0.1)];
-  }
-
-  /* Masking for the "Vault" section reveals */
-  .mask-radial {
-    mask-image: radial-gradient(circle, black 0%, transparent 80%);
-  }
-}
-
-/* --- Precision Animations & Utilities --- */
-@layer utilities {
-  /* Subtle film grain noise */
-  .bg-noise {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    opacity: 0.04;
-    pointer-events: none;
-    z-index: 9999;
-    filter: contrast(150%) brightness(100%);
-  }
-
-  .animate-spin-slow {
-    animation: spin 30s linear infinite;
-  }
-
-  .animate-pulse-subtle {
-    animation: pulse 4s ease-in-out infinite;
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.1; transform: scale(1); }
-    50% { opacity: 0.2; transform: scale(1.05); }
-  }
-
-  /* Reveal text animation */
-  .reveal-text {
-    @apply block overflow-hidden;
-  }
-  
-  .reveal-text span {
-    @apply block;
-    animation: reveal-up 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  }
-
-  @keyframes reveal-up {
-    0% { transform: translateY(110%); }
-    100% { transform: translateY(0); }
-  }
-}
-
-/* --- Minimalist Scrollbar --- */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
 }
