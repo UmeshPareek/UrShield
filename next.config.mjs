@@ -1,15 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Disabling strict type/lint checks to ensure deployment success
   typescript: {
-    ignoreBuildErrors: true,
+    // Allows the build to complete even if there are minor type mismatches
+    ignoreBuildErrors: true, 
   },
   eslint: {
+    // Prevents linting warnings from crashing the deployment
     ignoreDuringBuilds: true,
-  },
-  // Ensure webpack handles CSS modules correctly
-  webpack: (config) => {
-    return config;
   },
 };
 
