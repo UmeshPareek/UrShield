@@ -1,29 +1,27 @@
 "use client";
-import { motion } from "framer-motion";
-import { TrendingUp, ShieldCheck, Landmark } from 'lucide-react';
+import { User, Landmark, TrendingUp, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 export default function IndividualPage() {
   return (
-    <div className="bg-white min-h-screen">
-      <header className="py-20 px-8 max-w-7xl mx-auto">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="text-6xl font-serif mb-6 italic"
-        >
-          Wealth <span className="text-teal-800">Sovereignty.</span>
-        </motion.h1>
-        <p className="text-slate-500 max-w-xl text-lg font-light leading-relaxed">
-          Advanced tax planning and legacy protection for HNIs. We don't just file your returns; we engineer your financial future.
-        </p>
-      </header>
-
-      <section className="grid md:grid-cols-3 gap-1 px-8">
-        <div className="p-12 border border-slate-50 hover:bg-teal-50/30 transition-all">
-          <Landmark className="text-teal-800 mb-4" size={32} />
-          <h3 className="font-bold text-xl mb-2">Tax Optimization</h3>
-          <p className="text-sm text-slate-400">Legal strategies to minimize liability and maximize retention.</p>
+    <div className="min-h-screen bg-white">
+      <nav className="p-8 border-b border-gray-50"><Link href="/" className="flex items-center gap-2 text-teal-800 font-bold tracking-tighter"><ArrowLeft size={18}/> URSHIELD PRIVATE</Link></nav>
+      <section className="flex flex-col items-center justify-center py-32 px-8 text-center max-w-4xl mx-auto">
+        <Landmark size={64} className="text-teal-800 mb-8 opacity-20" />
+        <h1 className="text-6xl font-serif mb-8">Wealth <span className="italic text-teal-800">Design.</span></h1>
+        <p className="text-xl text-slate-500 font-light mb-12">Don't just pay taxes; play the game. Advanced planning that aligns with investment growth.</p>
+        <div className="grid md:grid-cols-2 gap-4 w-full text-left">
+          <div className="border p-8 rounded-xl hover:border-teal-800 transition-colors">
+            <TrendingUp className="text-teal-800 mb-2"/>
+            <h5 className="font-bold">Tax Optimization</h5>
+            <p className="text-xs text-slate-400">Plan, Save, Invest and Grow your personal capital.</p>
+          </div>
+          <div className="border p-8 rounded-xl hover:border-teal-800 transition-colors">
+            <User className="text-teal-800 mb-2"/>
+            <h5 className="font-bold">HNI Advisory</h5>
+            <p className="text-xs text-slate-400">Bespoke strategies for personal legacy and asset protection.</p>
+          </div>
         </div>
-        {/* Add more cards here */}
       </section>
     </div>
   );
