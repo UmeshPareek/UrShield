@@ -1,39 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+  --text: #ffffff;
+  --accent: #00ffd1;
+}
+
 @layer base {
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    @apply antialiased overflow-x-hidden;
-    /* This makes text look sharp and professional */
-    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* Giant Headlines - Zero line height for the "stacked" look */
-  h1 {
-    @apply font-serif italic;
-    line-height: 0.85;
-    letter-spacing: -0.05em;
-  }
-
-  /* Subheaders - Tight and uppercase */
-  h2, h3 {
-    @apply font-sans font-black uppercase tracking-[0.2em];
-    line-height: 1.1;
-  }
-
-  /* Body text - Elegant and airy */
-  p {
-    @apply font-sans font-light;
-    line-height: 1.6;
+    background-color: var(--bg);
+    color: var(--text);
+    @apply antialiased font-sans;
     letter-spacing: -0.01em;
-    color: rgba(255, 255, 255, 0.4); /* Dimmed for hierarchy */
+  }
+
+  /* Sharp, professional headers */
+  h1, h2, h3 {
+    @apply font-serif font-normal;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
   }
 }
 
 @layer components {
-  /* This creates the "High Fashion" text look */
-  .text-display {
-    @apply font-serif italic text-[clamp(4rem,12vw,16rem)];
-    line-height: 0.8;
+  /* Ultra-minimal card */
+  .sector-card {
+    @apply border-t border-white/10 pt-8 pb-16 transition-all duration-500 hover:border-white/40;
+  }
+
+  /* Professional CTA */
+  .btn-minimal {
+    @apply border border-white/20 px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest 
+           hover:bg-white hover:text-black transition-all duration-300;
   }
 }
