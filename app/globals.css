@@ -12,37 +12,39 @@
   body {
     background-color: var(--bg);
     color: var(--text);
-    @apply antialiased font-sans;
-    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
-  /* Sharp, professional headers */
   h1, h2, h3 {
-    @apply font-serif font-normal;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 400;
     line-height: 1.15;
     letter-spacing: -0.02em;
   }
 
   p {
-    @apply font-sans font-light;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
   }
 }
 
 @layer components {
-  /* High-end minimalist card */
-  .sector-card {
-    @apply border-t border-white/10 pt-10 pb-20 transition-all duration-500 hover:border-white/40;
-  }
-
-  /* Professional CTA */
   .btn-minimal {
-    @apply border border-white/20 px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] 
-           hover:bg-white hover:text-black transition-all duration-300;
+    @apply border border-white/20 px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300;
+  }
+  
+  .btn-minimal:hover {
+    @apply bg-white text-black border-white;
   }
 
-  .nav-link {
-    @apply text-[10px] font-bold uppercase tracking-widest text-white/30 hover:text-[#00ffd1] transition-colors;
+  .sector-card {
+    @apply border-t border-white/10 pt-10 pb-20 transition-all duration-500;
+  }
+  
+  .sector-card:hover {
+    @apply border-white/40;
   }
 }
