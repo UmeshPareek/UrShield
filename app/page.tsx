@@ -1,100 +1,90 @@
 "use client";
-import React, { useState } from 'react';
-import { Shield, BarChart3, Rocket, Building2, User, ChevronRight, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Shield, Rocket, Building2, User, ChevronRight, BarChart3 } from 'lucide-react';
+import Link from 'next/link';
 
-export default function UrShield() {
-  const [category, setCategory] = useState('Organisation');
-
-  const services = {
-    Individual: [
-      "Personal Wealth Shielding & Tax Optimization",
-      "Legacy Planning & Private Investment Advisory",
-      "Global Tax Compliance for High-Net-Worth Individuals",
-      "Individual PAN, GST & Income Tax Filing"
-    ],
-    Organisation: [
-      "Corporate Stress-Testing & Compliance Audits",
-      "FSSAI, Local Licenses & Regulatory Navigation",
-      "Institutional Tax Strategy & Scrutiny Management",
-      "Fractional CFO & Financial Performance Reporting"
-    ],
-    Startup: [
-      "Investor-Ready Pitch Decks & Storytelling",
-      "Dynamic Financial Modeling & Valuation",
-      "Seed-to-Exit Regulatory Roadmap",
-      "GST, PAN & Startup India Recognition"
-    ]
-  };
+export default function UrShieldHub() {
+  const sectors = [
+    { 
+      id: 'individual', 
+      title: 'Individual', 
+      icon: <User />, 
+      path: '/individual',
+      desc: 'Private Wealth & Tax Sovereignty.' 
+    },
+    { 
+      id: 'organisation', 
+      title: 'Organisation', 
+      icon: <Building2 />, 
+      path: '/organisation',
+      desc: 'Institutional Resilience & Compliance.' 
+    },
+    { 
+      id: 'startup', 
+      title: 'Startup', 
+      icon: <Rocket />, 
+      path: '/startup',
+      desc: 'Venture Architecture & Capital Strategy.' 
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-teal-100">
-      <nav className="flex justify-between items-center px-8 py-6 border-b border-gray-100 sticky top-0 bg-white/80 backdrop-blur-md z-50">
+    <div className="min-h-screen bg-white">
+      {/* ELITE NAV */}
+      <nav className="flex justify-between items-center px-12 py-8 border-b border-gray-50 sticky top-0 bg-white/80 backdrop-blur-md z-50">
         <div className="flex items-center gap-2">
-          <Shield className="text-teal-800 w-8 h-8" />
-          <span className="text-2xl font-bold tracking-tighter text-teal-800">URSHIELD</span>
+          <Shield className="text-[#008080] w-8 h-8" />
+          <span className="text-2xl font-bold tracking-tighter text-[#008080]">URSHIELD</span>
         </div>
-        <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-slate-400">
-          <a href="#services" className="hover:text-teal-800 transition-colors">Solutions</a>
-          <a href="#contact" className="hover:text-teal-800 transition-colors">Contact</a>
-        </div>
+        <Link href="#contact" className="bg-[#008080] text-white px-8 py-2 rounded-full text-xs font-bold tracking-widest hover:bg-[#006666] transition-all">
+          SECURE ACCESS
+        </Link>
       </nav>
 
-      <header className="px-8 py-24 md:py-40 max-w-7xl mx-auto text-center">
-        <h1 className="text-6xl md:text-8xl font-serif mb-8 leading-tight">
-          Your Vision, <span className="italic text-teal-800">Shielded.</span><br />
-          Your Growth, Guaranteed.
-        </h1>
-        <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-          The elite standard in Compliance, Financial Intelligence, and Strategic Consulting. We fortify your business against the industry’s volatility.
-        </p>
-        <div className="flex flex-col md:flex-row gap-6 justify-center">
-          <button className="bg-teal-800 text-white px-10 py-4 rounded-full font-bold hover:bg-teal-900 transition-all shadow-lg shadow-teal-100">
-            Get Business Tested
-          </button>
-        </div>
+      {/* HERO SECTION */}
+      <header className="px-8 py-32 text-center max-w-5xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <h1 className="text-7xl md:text-9xl font-serif mb-8 leading-tight italic text-slate-900">
+            Vision <span className="text-[#008080]">Shielded.</span>
+          </h1>
+          <p className="text-xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed">
+            The elite consulting standard for leaders who demand absolute compliance and strategic growth.
+          </p>
+        </motion.div>
       </header>
 
-      <section id="services" className="bg-slate-50 py-24 px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-serif mb-16 text-center italic">Choose Your Protection Tier</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {['Individual', 'Organisation', 'Startup'].map((item) => (
-              <div 
-                key={item}
-                onClick={() => setCategory(item)}
-                className={`cursor-pointer p-8 rounded-2xl transition-all duration-500 border-2 ${category === item ? 'bg-white border-teal-800 shadow-2xl scale-105' : 'bg-transparent border-gray-200 opacity-60'}`}
-              >
-                {item === 'Individual' && <User className="w-10 h-10 mb-4 text-teal-800" />}
-                {item === 'Organisation' && <Building2 className="w-10 h-10 mb-4 text-teal-800" />}
-                {item === 'Startup' && <Rocket className="w-10 h-10 mb-4 text-teal-800" />}
-                <h3 className="text-2xl font-bold mb-4 uppercase tracking-tighter">{item}</h3>
-                <ul className="space-y-4">
-                  {services[item as keyof typeof services].map((service, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
-                      <CheckCircle2 className="w-4 h-4 mt-1 text-teal-800 shrink-0" />
-                      {service}
-                    </li>
-                  ))}
-                </ul>
+      {/* SECTOR CARDS */}
+      <section className="px-8 pb-32 max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+        {sectors.map((sector) => (
+          <Link key={sector.id} href={sector.path}>
+            <motion.div 
+              whileHover={{ y: -10 }}
+              className="group p-12 border border-slate-100 rounded-[3rem] bg-slate-50 hover:bg-white hover:shadow-2xl transition-all duration-500 cursor-pointer"
+            >
+              <div className="text-[#008080] mb-6 group-hover:scale-110 transition-transform">{sector.icon}</div>
+              <h3 className="text-3xl font-serif mb-4 uppercase tracking-tighter">{sector.title}</h3>
+              <p className="text-slate-400 mb-8 text-sm">{sector.desc}</p>
+              <div className="flex items-center text-[#008080] font-bold text-xs tracking-[0.2em] uppercase">
+                Explore Sector <ChevronRight size={14} className="ml-1" />
               </div>
-            ))}
+            </motion.div>
+          </Link>
+        ))}
+      </section>
+
+      {/* CASE STUDY TEASER */}
+      <section className="bg-slate-900 py-24 px-8 text-white">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+          <div className="mb-8 md:mb-0">
+            <h2 className="text-4xl font-serif italic mb-4">The UrShield Portfolio</h2>
+            <p className="text-slate-400 max-w-md">Our strategies have powered ventures like Wendz, Gully Bowl, and Bungry's. Real growth, verified.</p>
           </div>
+          <Link href="/startup" className="border border-teal-800 text-teal-500 px-10 py-4 rounded-full font-bold hover:bg-teal-800 hover:text-white transition-all">
+            VIEW CASE STUDIES
+          </Link>
         </div>
       </section>
-
-      <section id="contact" className="py-24 px-8 max-w-3xl mx-auto">
-        <h2 className="text-5xl font-serif mb-12 text-center">Secure Access</h2>
-        <form className="space-y-8">
-          <input type="text" placeholder="Full Name" className="w-full border-b-2 border-gray-100 py-3 focus:outline-none focus:border-teal-800 transition-colors bg-transparent" />
-          <input type="email" placeholder="Email Address" className="w-full border-b-2 border-gray-100 py-3 focus:outline-none focus:border-teal-800 transition-colors bg-transparent" />
-          <textarea rows={4} placeholder="How can we shield your business?" className="w-full border-b-2 border-gray-100 py-3 focus:outline-none focus:border-teal-800 transition-colors bg-transparent resize-none"></textarea>
-          <button className="w-full bg-teal-800 text-white py-6 rounded-xl font-bold uppercase tracking-widest hover:bg-teal-900 transition-all">Submit Brief</button>
-        </form>
-      </section>
-
-      <footer className="bg-slate-900 text-white py-20 px-8 text-center">
-        <p className="text-[10px] tracking-[0.5em] text-slate-500 uppercase">© 2026 UrShield Consulting Group. Absolute Compliance.</p>
-      </footer>
     </div>
   );
 }
