@@ -1,105 +1,63 @@
 "use client";
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Building2, ShieldAlert, BarChart3, Globe, FileSearch, ArrowLeft, Lock, Zap } from 'lucide-react';
+import { Shield, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function OrganisationSector() {
-  const pillars = [
-    { 
-      title: "Institutional Stress-Testing", 
-      icon: <BarChart3 size={40} strokeWidth={1} />, 
-      desc: "Rigorous diagnostic audits of organizational financial health and operational compliance." 
+  const services = [
+    {
+      category: "Compliance",
+      items: ["Institutional Stress-Testing", "GST & PAN Infrastructure", "Local License Management"]
     },
-    { 
-      title: "Compliance Architecture", 
-      icon: <ShieldAlert size={40} strokeWidth={1} />, 
-      desc: "End-to-end management of GST, PAN, and local regulatory frameworks to ensure zero drift." 
-    },
-    { 
-      title: "Global Risk Mitigation", 
-      icon: <Globe size={40} strokeWidth={1} />, 
-      desc: "Strategic advisory on international tax planning and multi-jurisdictional asset protection." 
+    {
+      category: "Risk",
+      items: ["Scrutiny Advisory", "Internal Audit Preparation", "Regulatory Drift Analysis"]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#00FFD1] selection:text-black">
-      {/* ELITE NAV */}
-      <nav className="p-10 border-b border-white/5 fixed w-full z-50 bg-black/50 backdrop-blur-2xl flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-3 text-white/40 hover:text-[#00FFD1] transition-all">
-          <ArrowLeft size={20} /> <span className="text-[10px] font-black uppercase tracking-[0.5em]">Central Hub</span>
+    <div className="min-h-screen bg-[#0a0a0a] text-white px-6 md:px-20 py-10">
+      <nav className="flex items-center gap-4 mb-32">
+        <Link href="/" className="text-white/40 hover:text-white transition-colors">
+          <ArrowLeft size={20} />
         </Link>
-        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 italic">Sector // Enterprise</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">Organisation Sector</span>
       </nav>
 
-      <main className="max-w-[1400px] mx-auto px-12 pt-60 pb-40">
-        <header className="mb-40 max-w-5xl">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-            <h1 className="text-[clamp(4rem,12vw,16rem)] font-serif italic leading-[0.85] tracking-tighter mb-12">
-              Institutional <br /><span className="text-gradient not-italic">Resilience.</span>
-            </h1>
-            <p className="text-2xl text-white/30 font-light max-w-3xl leading-relaxed">
-              We provide the architectural foundation for organizations that demand absolute 
-              regulatory integrity and optimized capital performance.
-            </p>
-          </motion.div>
+      <main className="max-w-4xl">
+        <header className="mb-24">
+          <h1 className="text-5xl md:text-6xl mb-8 italic">Institutional resilience.</h1>
+          <p className="text-white/40 text-lg max-w-xl font-light leading-relaxed">
+            We provide the infrastructure for organizations to navigate complex regulatory landscapes with absolute certainty.
+          </p>
         </header>
 
-        {/* PILLARS OF FORTIFICATION */}
-        <section className="grid lg:grid-cols-3 gap-1 border-y border-white/5 px-1 mb-40">
-          {pillars.map((pillar, i) => (
-            <motion.div 
-              key={i}
-              whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
-              className="p-16 border-x border-white/5 group transition-all duration-700"
-            >
-              <div className="text-[#00FFD1] mb-12 opacity-30 group-hover:opacity-100 group-hover:rotate-12 transition-all">
-                {pillar.icon}
-              </div>
-              <h3 className="text-4xl font-serif italic mb-6 leading-tight">{pillar.title}</h3>
-              <p className="text-white/30 text-lg leading-relaxed font-light mb-10">{pillar.desc}</p>
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#00FFD1] opacity-0 group-hover:opacity-100 transition-opacity">
-                Explore Module <Zap size={10} />
-              </div>
-            </motion.div>
+        <section className="grid md:grid-cols-2 gap-20">
+          {services.map((group, i) => (
+            <div key={i} className="border-t border-white/10 pt-8">
+              <h3 className="text-[#00ffd1] text-[10px] font-bold uppercase tracking-widest mb-8">
+                {group.category}
+              </h3>
+              <ul className="space-y-6">
+                {group.items.map((item, j) => (
+                  <li key={j} className="flex items-start gap-3 text-white/60 font-light">
+                    <CheckCircle2 size={16} className="text-white/20 mt-1" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </section>
 
-        {/* THE ENTERPRISE SCANNER BLOCK */}
-        <section className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="glass rounded-[5rem] p-24 relative overflow-hidden">
-            <Lock className="text-[#00FFD1] mb-12 opacity-40" size={50} strokeWidth={1} />
-            <h2 className="text-5xl font-serif italic mb-8">Scrutiny <br/>Management.</h2>
-            <p className="text-white/30 text-xl font-light leading-relaxed mb-12">
-              UrShield acts as the primary barrier during Income Tax and GST scrutinies. 
-              Our specialists manage the entire lifecycle of regulatory inquiries, 
-              ensuring institutional stability.
-            </p>
-            <ul className="space-y-6">
-              {["Audit Preparedness", "Tax Return Optimization", "Regulatory Sync"].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] text-white/50">
-                  <div className="w-1.5 h-1.5 bg-[#00FFD1]" /> {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="text-center lg:text-left px-12">
-            <h3 className="text-6xl font-serif italic mb-10 leading-tight">Fortify Your <br/><span className="text-[#00FFD1] not-italic">Organization.</span></h3>
-            <p className="text-white/20 text-xl font-light mb-12">
-              Enter the dashboard to monitor your entity's compliance status and resilience score in real-time.
-            </p>
-            <Link href="/organisation/dashboard" className="btn-giant bg-white text-black inline-block hover:bg-[#00FFD1]">
-              OPEN DASHBOARD
-            </Link>
-          </div>
+        <section className="mt-40 p-12 bg-white/5 rounded-3xl border border-white/10">
+          <h4 className="text-2xl mb-6 italic">Secure consultation.</h4>
+          <p className="text-white/40 mb-10 text-sm max-w-md">Request a clinical diagnostic of your entity's current compliance and risk standing.</p>
+          <Link href="/#contact" className="inline-block border border-white/20 px-10 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+            Initiate Briefing
+          </Link>
         </section>
       </main>
-
-      <footer className="py-20 text-center border-t border-white/5">
-        <span className="text-[10px] font-black tracking-[1em] text-white/10 uppercase italic">Institutional Core // UrShield 2026</span>
-      </footer>
     </div>
   );
 }
