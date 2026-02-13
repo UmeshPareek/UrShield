@@ -16,23 +16,32 @@
     letter-spacing: -0.01em;
   }
 
-  /* Sharp, professional headers */
   h1, h2, h3 {
+    /* Sophisticated, clinical headers */
     @apply font-serif font-normal;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    @apply font-sans font-light;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @layer components {
-  /* Ultra-minimal card */
-  .sector-card {
-    @apply border-t border-white/10 pt-8 pb-16 transition-all duration-500 hover:border-white/40;
+  .btn-minimal {
+    @apply border border-white/20 px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] 
+           hover:bg-white hover:text-black transition-all duration-300;
   }
 
-  /* Professional CTA */
-  .btn-minimal {
-    @apply border border-white/20 px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest 
-           hover:bg-white hover:text-black transition-all duration-300;
+  .nav-link {
+    @apply text-[10px] font-bold uppercase tracking-widest text-white/30 hover:text-[#00ffd1] transition-colors;
+  }
+
+  .sector-card {
+    /* Minimalist separation for a top-tier look */
+    @apply border-t border-white/10 pt-10 pb-20 transition-all duration-500 hover:border-white/40;
   }
 }
