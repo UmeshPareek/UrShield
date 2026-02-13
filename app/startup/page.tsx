@@ -1,38 +1,59 @@
 "use client";
-import { motion } from "framer-motion";
-import { Rocket, FileText, PieChart, ShieldCheck, ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Rocket, FileText, PieChart, Layers, ArrowUpRight } from 'lucide-react';
+import Nav from '../components/Nav';
 
-export default function StartupPage() {
+export default function StartupLaunchpad() {
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="p-8"><Link href="/" className="flex items-center gap-2 text-teal-800 font-bold"><ArrowLeft size={18}/> BACK TO HUB</Link></nav>
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      <Nav />
       
-      <header className="px-8 py-20 max-w-5xl mx-auto text-center">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <span className="text-teal-800 font-bold tracking-widest text-xs uppercase">Venture Architecture</span>
-          <h1 className="text-6xl font-serif mt-4 mb-6 italic">From Concept to <span className="text-teal-800">Capital.</span></h1>
-          <p className="text-slate-500 text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            We turn disruptive ideas into institutional-grade investments. Our team has built and scaled brands across Ad-Tech and QSR sectors.
-          </p>
-        </motion.div>
+      <header className="h-[70vh] flex flex-col justify-end px-12 pb-20">
+        <motion.h1 
+          initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+          className="text-[10vw] font-serif italic leading-none"
+        >
+          Venture <span className="text-[#00FFD1]">Logic.</span>
+        </motion.h1>
       </header>
 
-      <section className="grid md:grid-cols-2 gap-12 px-8 max-w-7xl mx-auto pb-32">
-        <div className="bg-slate-50 p-12 rounded-[3rem]">
-          <Rocket className="text-teal-800 mb-6" size={40} />
-          <h3 className="text-2xl font-bold mb-4 text-teal-800">Investor-Ready Decks</h3>
-          <p className="text-slate-600 mb-6">High-conversion storytelling and design that stands up to aggressive VC scrutiny.</p>
-          <ul className="space-y-3 text-sm font-semibold">
-            <li className="flex gap-2"><ShieldCheck size={18} className="text-teal-800"/> Market Analysis</li>
-            <li className="flex gap-2"><ShieldCheck size={18} className="text-teal-800"/> Financial Modeling</li>
-          </ul>
-        </div>
-        <div className="bg-teal-800 p-12 rounded-[3rem] text-white">
-          <FileText className="text-teal-100 mb-6" size={40} />
-          <h3 className="text-2xl font-bold mb-4">Regulatory Launchpad</h3>
-          <p className="text-teal-100 mb-6">Seamless execution of GST, PAN, FSSAI, and local licensing to get your ideas running.</p>
-          <button className="bg-white text-teal-800 px-8 py-3 rounded-full font-bold uppercase text-xs">Start Filing</button>
+      <section className="px-12 py-40 border-t border-white/5">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-32">
+          <div className="space-y-32">
+            <div className="group">
+              <span className="text-[#00FFD1] font-bold text-xs tracking-widest mb-4 block">01 / ARCHITECTURE</span>
+              <h3 className="text-5xl font-serif italic mb-6">Pitch Decks & <br/>Financial Modeling.</h3>
+              <p className="text-slate-500 text-lg leading-relaxed mb-8">
+                Institutional-grade valuations and storytelling. We build the financial models that survive the 
+                most aggressive Venture Capital scrutiny.
+              </p>
+              <FileText className="text-white/10 group-hover:text-[#00FFD1] transition-colors" size={100} strokeWidth={1}/>
+            </div>
+
+            <div className="group">
+              <span className="text-[#00FFD1] font-bold text-xs tracking-widest mb-4 block">02 / INFRASTRUCTURE</span>
+              <h3 className="text-5xl font-serif italic mb-6">Regulatory <br/>Launchpad.</h3>
+              <p className="text-slate-500 text-lg leading-relaxed mb-8">
+                Bureaucracy is a friction point. We eliminate it. End-to-end execution of GST, PAN, 
+                Local Licenses, and FSSAI filings.
+              </p>
+              <Layers className="text-white/10 group-hover:text-[#00FFD1] transition-colors" size={100} strokeWidth={1}/>
+            </div>
+          </div>
+
+          <div className="sticky top-40 h-[600px] glass rounded-[4rem] p-16 flex flex-col justify-between overflow-hidden">
+            <div>
+              <Rocket className="text-[#00FFD1] mb-10" size={60} />
+              <h4 className="text-4xl font-serif italic">Initiate Your <br/>Market Disruption.</h4>
+            </div>
+            <p className="text-slate-400">
+              The Startup tier is designed for those who value speed as much as compliance. 
+              We handle the foundation; you handle the innovation.
+            </p>
+            <button className="w-full py-8 bg-[#00FFD1] text-black font-black uppercase tracking-widest flex items-center justify-center gap-4 group">
+              ORDER LAUNCHPAD <ArrowUpRight className="group-hover:rotate-45 transition-transform"/>
+            </button>
+          </div>
         </div>
       </section>
     </div>
